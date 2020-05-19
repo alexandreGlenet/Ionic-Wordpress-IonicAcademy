@@ -1,0 +1,18 @@
+ion-item {
+
+    &.selected {
+        --background: rgba(var(--ion-color-primary-rgb), 0.14);
+
+        ion-icon {
+            color: var(--ion-color-primary);
+        }
+    }
+
+    ion-icon {
+        color: #616e7e;
+    }
+
+    ion-label {
+        font-weight: 500;
+    }
+}
