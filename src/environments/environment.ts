@@ -4,7 +4,7 @@
 
 export const environment = {
          production: false,
-         authUrl: "http://localhost/Site_WordPress/Test-Api/wordpress/wp-json",
+         authUrl: "http://localhost/Site_WordPress/Test-Api/wordpress/wp-json/",
          apiUrl: "http://localhost/Site_WordPress/Test-Api/wordpress/wp-json/wp/v2/",
        };
 
