@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService } from '../../services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 
@@ -9,13 +9,12 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./account.page.scss'],
 })
 export class AccountPage implements OnInit {
-
   userForm: FormGroup;
+  user = this.api.getCurrentUser();
 
-  constructor(
-    private api: ApiService, 
-    private fb: FormBuilder,
-    private alertCtrl: AlertController) { }
+  posts = [];
+
+  constructor(private api: ApiService, private fb: FormBuilder, private alertCtrl: AlertController) { }
 
   ngOnInit() {
     this.userForm = this.fb.group({
@@ -23,6 +22,14 @@ export class AccountPage implements OnInit {
       password: ['', Validators.required]
     });
 
+    this.user.subscribe(user => {
+      console.log('user changed: ', user);
+      if (user) {
+        this.loadPrivatePosts();
+      } else {
+        this.posts = [];
+      }
+    })
   }
 
   login() {
@@ -42,6 +49,14 @@ export class AccountPage implements OnInit {
     );
   }
 
-  
+  loadPrivatePosts() {
+    this.api.getPrivatePosts().subscribe(res => {
+      console.log('my private posts: ', res);
+      this.posts = res;
+    });
+  }
 
+  logout() {
+    this.api.logout();
+  }
 }

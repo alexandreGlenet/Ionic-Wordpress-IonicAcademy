@@ -172,12 +172,18 @@ export class ApiService {
   }
 
   getPrivatePosts() {
-    return this.http.get<any[]>(`${environment.apiUrl}posts?_embed&status=private`).pipe(
+    return this.http.get<any[]>(`${environment.apiUrl}posts?_embed`).pipe( // posts?_embed&status=private` ne fonctionne plus mais sans le private ca marche bizarre
       map(data => {
         for (let post of data) {
-          if (post['_embedded']['wp:featuredmedia']) {
+          if (post["_embedded"]["wp:featuredmedia"]) {
             post.media_url =
-              post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['medium'].source_url;
+              post["_embedded"]["wp:featuredmedia"][0]["media_details"].sizes[
+                "full"
+              ].source_url;
+          }
+          else {
+            post.media_url = "../assets/img/no-image-available.jpg";
+            
           }
         }
         return data;
