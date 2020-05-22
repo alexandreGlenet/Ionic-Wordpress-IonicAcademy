@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
+import { Plugins } from '@capacitor/core';
+
 @Component({
   selector: 'app-post-details',
   templateUrl: './post-details.page.html',
@@ -19,6 +21,10 @@ export class PostDetailsPage implements OnInit {
       console.log('res: ', res);
       this.post = res;
     });
+  }
+
+  sharePost() {
+
   }
 
 }

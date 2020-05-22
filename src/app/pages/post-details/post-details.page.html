@@ -3,10 +3,45 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref = "/posts"></ion-back-button>
     </ion-buttons>
-    <ion-title>postDetails</ion-title>
+    <ion-title>
+      {{ post?.title.rendered }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <div *ngIf="post">
+    <img [src]="post.media_url" [style.width]="'100%'" *ngIf="post.media_url">
+    <div [innerHTML]="post.content.rendered"></div>
+  </div>
 
-</ion-content>
+  <!-- <ion-item>
+    <ion-label position="floating">My comment</ion-label>
+    <ion-textarea rows="5" [(ngModel)]="newComment"></ion-textarea>
+  </ion-item>
+  <ion-button expand="full" (click)="addComment()" [disabled]="newComment == ''">Add comment</ion-button>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Comments</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let com of comments">
+      <ion-avatar slot="start">
+        <img [src]="com.author_avatar_urls['96']">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ com.author_name }}</h2>
+        <p [innerHTML]="com.content.rendered"></p>
+      </ion-label>
+    </ion-item>
+  </ion-list> -->
+  </ion-content>
+
+  <ion-footer>
+    <!-- <ion-toolbar color="primary">
+      <ion-button color="light" expand="full" fill="clear" (click)="sharePost()">
+        <ion-icon name="share" slot="start"></ion-icon> Share
+      </ion-button>
+    </ion-toolbar> -->
+  </ion-footer>
+
