@@ -71,4 +71,15 @@ export class ApiService {
       })
       );
   }
+
+  getCategories() {
+    return this.http
+      .get<any>(`${environment.apiUrl}categories`)
+      .pipe(
+        map(res => {
+          console.log('api: ', res);
+          return res;
+        })
+      )
+  }
 }
