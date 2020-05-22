@@ -37,7 +37,7 @@ export class PostsPage implements OnInit {
       await loading.present();
     }
 
-    this.api.getPosts(this.page).subscribe(
+    this.api.getPosts(this.page, this.categoryFilter).subscribe(
       res => {
         console.log('res: ', res);
         if (infiniteScroll) {

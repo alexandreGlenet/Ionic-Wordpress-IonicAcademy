@@ -10,7 +10,7 @@ import { map } from "rxjs/operators";
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  getPosts(page = 1): Observable<any> {
+  getPosts(page = 1, categoryId = null): Observable<any> {
     let options = {
       observe: "response" as "body",
       params: {
@@ -19,8 +19,16 @@ export class ApiService {
       },
     };
 
+    let url = `${environment.apiUrl}posts?_embed`;
+
+    if(categoryId){
+      url += `&categories=${categoryId}`;
+    }
+
+    console.log('request: ', url);
+
     return this.http
-      .get<any[]>(`${environment.apiUrl}posts?_embed`, options)
+      .get<any[]>(url, options)
       .pipe(
         map((res) => {
           let mediaUrl = "../assets/img/no-image-available.jpg";
