@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
 import { Plugins } from '@capacitor/core';
+const { Share } = Plugins;
 
 @Component({
   selector: 'app-post-details',
@@ -23,8 +24,13 @@ export class PostDetailsPage implements OnInit {
     });
   }
 
-  sharePost() {
-
+  async sharePost() {
+    Share.share({
+      title: this.post.title.rendered,
+      text: 'Check out this post!',
+      url: this.post.link,
+      dialogTitle: 'Share now'
+    });
   }
 
 }
