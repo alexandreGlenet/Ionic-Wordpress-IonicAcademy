@@ -209,7 +209,7 @@ export class ApiService {
     return this.http.get<any[]>(`${environment.apiUrl}comments?post=${postId}`);
   }
 
-  addComments(postId, comment) {
+  addComment(postId, comment) {
     const user = this.getUserValue();
 
     const body = {
@@ -220,5 +220,6 @@ export class ApiService {
     }
 
     return this.http.post(`${environment.apiUrl}/comments`, body);
+  }
 
 }
