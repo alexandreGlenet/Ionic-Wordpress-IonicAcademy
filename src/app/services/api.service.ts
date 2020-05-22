@@ -205,6 +205,20 @@ export class ApiService {
     });
   }
 
+  getComments(postId) {
+    return this.http.get<any[]>(`${environment.apiUrl}comments?post=${postId}`);
+  }
 
+  addComments(postId, comment) {
+    const user = this.getUserValue();
+
+    const body = {
+      post: postId,
+      content: comment,
+      author_email: user.user_email,
+      author_name: user.user_display_name,
+    }
+
+    return this.http.post(`${environment.apiUrl}/comments`, body);
 
 }
