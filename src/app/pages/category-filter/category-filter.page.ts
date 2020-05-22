@@ -8,12 +8,15 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class CategoryFilterPage implements OnInit {
 
+  categories = [];
+
   constructor(private api: ApiService) { }
 
   ngOnInit() {
     this.api.getCategories().subscribe(res => {
-      
-    })
+      console.log('cat :', res);
+      this.categories = res;
+    });
   }
 
 }
