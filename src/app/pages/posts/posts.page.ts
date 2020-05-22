@@ -37,7 +37,7 @@ export class PostsPage implements OnInit {
       await loading.present();
     }
 
-    this.api.getPosts(this.page, this.categoryFilter).subscribe(
+    this.api.getPosts(this.page, this.categoryFilter, this.searchTerm).subscribe(
       res => {
         console.log('res: ', res);
         if (infiniteScroll) {
@@ -91,7 +91,7 @@ export class PostsPage implements OnInit {
   }
 
   searchChanged() {
-    this.page = 0;
+    this.page = 1;
     this.loadPosts();
   }
 

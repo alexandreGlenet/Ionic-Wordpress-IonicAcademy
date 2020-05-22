@@ -10,7 +10,7 @@ import { map } from "rxjs/operators";
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  getPosts(page = 1, categoryId = null): Observable<any> {
+  getPosts(page = 1, categoryId = null, search = ''): Observable<any> {
     let options = {
       observe: "response" as "body",
       params: {
@@ -23,6 +23,10 @@ export class ApiService {
 
     if(categoryId){
       url += `&categories=${categoryId}`;
+    }
+
+    if(search != '') {
+      url += `&search=${search}`;
     }
 
     console.log('request: ', url);

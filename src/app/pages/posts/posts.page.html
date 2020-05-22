@@ -17,6 +17,7 @@
 <ion-content>
 
   
+  <ion-searchbar (ionChange)="searchChanged($event)" debounce="1000" [(ngModel)]="searchTerm"></ion-searchbar>
 
   
   <div *ngIf="totalPosts > 0" class="ion-text-center ion-padding">
