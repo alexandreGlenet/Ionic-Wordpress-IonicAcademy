@@ -1,9 +1,8 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>categoryFilter</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <ion-list>
+    <ion-item *ngFor="let cat of categories" button (click)="selectCat(cat)">
+      <ion-icon name="checkmark" slot="start" *ngIf="selected == cat.id"></ion-icon>
+      {{ cat.name }}
+    </ion-item>
+  </ion-list>
 </ion-content>
