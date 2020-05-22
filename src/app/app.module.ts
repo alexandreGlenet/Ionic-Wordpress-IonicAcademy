@@ -11,6 +11,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 
 import { IonicStorageModule } from "@ionic/storage";
+import { CategoryFilterPageModule } from './pages/category-filter/category-filter.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { IonicStorageModule } from "@ionic/storage";
     AppRoutingModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),
+    CategoryFilterPageModule
   ],
   providers: [
     StatusBar,

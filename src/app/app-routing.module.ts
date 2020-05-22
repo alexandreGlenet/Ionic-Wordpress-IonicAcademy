@@ -24,6 +24,10 @@ const routes: Routes = [
         (m) => m.PostDetailsPageModule
       ),
   },
+  {
+    path: 'category-filter',
+    loadChildren: () => import('./pages/category-filter/category-filter.module').then( m => m.CategoryFilterPageModule)
+  },
 ];
 
 @NgModule({
