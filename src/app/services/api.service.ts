@@ -47,7 +47,7 @@ export class ApiService {
                   "full"
                 ].source_url;
             }
-            else if (!post["_embedded"]["wp:featuredmedia"]) {
+            else {
                    post.media_url = "../assets/img/no-image-available.jpg";
                    //post.source_url = "../assets/img/no-image-available.jpg";
                  }
@@ -98,6 +98,45 @@ export class ApiService {
         return items;
       })
     )
+  }
+
+  getPages() {
+
+    return this.http.get<any[]>(`${environment.apiUrl}pages`).pipe(
+      map(res => {
+        const items = [];
+        for (let item of res) {
+          items.push({
+            url: `page/${item.id}`,
+            title: item.title.rendered,
+            icon: 'file-tray'
+          });
+        }
+        return items;
+      })
+    )
+
+  }
+
+  getPageContent(id) {
+
+    return this.http
+      .get<any>(`${environment.apiUrl}pages/${id}?_embed`)
+      .pipe(map(page => {
+
+        if (page["_embedded"]["wp:featuredmedia"]) {
+          page.media_url =
+            page["_embedded"]["wp:featuredmedia"][0]["media_details"].sizes[
+              "full"
+            ].source_url;
+        }
+        else {
+          page.media_url = "../assets/img/no-image-available.jpg";
+        }
+        return page;
+      })
+      );
+
   }
 
 
