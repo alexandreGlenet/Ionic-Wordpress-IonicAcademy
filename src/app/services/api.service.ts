@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable, BehaviorSubject, from } from "rxjs";
 import { map, switchMap, tap } from "rxjs/operators";
+import { Storage } from '@ionic/storage';
 import { Platform } from '@ionic/angular';
 
 const JWT_KEY = "mytoken";
