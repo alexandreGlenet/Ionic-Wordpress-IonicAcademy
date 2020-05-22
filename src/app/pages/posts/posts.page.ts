@@ -91,7 +91,7 @@ export class PostsPage implements OnInit {
   }
 
   searchChanged() {
-    this.page = 1;
+    //this.page = 0;
     this.loadPosts();
   }
 

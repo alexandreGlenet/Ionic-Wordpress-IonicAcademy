@@ -28,6 +28,10 @@ const routes: Routes = [
     path: 'category-filter',
     loadChildren: () => import('./pages/category-filter/category-filter.module').then( m => m.CategoryFilterPageModule)
   },
+  {
+    path: 'page/:id',
+    loadChildren: () => import('./pages/wp-page/wp-page.module').then( m => m.WpPagePageModule)
+  },
 ];
 
 @NgModule({
