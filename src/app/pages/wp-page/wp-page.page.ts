@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-wp-page',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WpPagePage implements OnInit {
 
-  constructor() { }
+  page = null;
+
+  constructor(private route: ActivatedRoute, private api: ApiService) { }
 
   ngOnInit() {
+
+    let id = this.route.snapshot.paramMap.get('id');
+    this.api.getPageContent(id).subscribe(res => {
+      console.log('res: ', res);
+      this.page = res;
+    });
+
   }
 
 }
