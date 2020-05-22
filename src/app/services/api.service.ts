@@ -51,4 +51,24 @@ export class ApiService {
         })
       );
   }
+
+  getPostContent(id) {
+    return this.http
+      .get<any>(`${environment.apiUrl}posts/${id}?_embed`)
+      .pipe(map (post => {
+
+        if (post["_embedded"]["wp:featuredmedia"]) {
+          post.media_url =
+            post["_embedded"]["wp:featuredmedia"][0]["media_details"].sizes[
+              "full"
+            ].source_url;
+        }
+        else if (!post["_embedded"]["wp:featuredmedia"]) {
+          post.media_url = "../assets/img/no-image-available.jpg";
+          //post.source_url = "../assets/img/no-image-available.jpg";
+        }
+        return post;
+      })
+      );
+  }
 }
