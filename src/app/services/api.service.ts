@@ -213,11 +213,10 @@ export class ApiService {
   addComment(postId, comment) {
     const user = this.getUserValue();
 
-    const body = {
+     const body = {
       post: postId,
       content: comment,
       author_email: user.user_email,
-      
       author_name: user.user_display_name,
     }
 
