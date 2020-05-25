@@ -14,6 +14,7 @@ const JWT_KEY = "mytoken";
 export class ApiService {
 
   private user = new BehaviorSubject(null);
+  //private postId = this.post;
 
   constructor(
     private http: HttpClient,
@@ -216,10 +217,11 @@ export class ApiService {
       post: postId,
       content: comment,
       author_email: user.user_email,
+      
       author_name: user.user_display_name,
     }
 
-    return this.http.post(`${environment.apiUrl}/comments`, body);
+    return this.http.post(`${environment.apiUrl}comments`, body);
   }
 
 }

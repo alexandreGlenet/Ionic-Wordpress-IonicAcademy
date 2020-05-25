@@ -11,9 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { CategoryFilterPageModule } from './pages/category-filter/category-filter.module';
-import { JwtInterceptor } from './interceptors/jwt.interceptors';
 
-//import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { JwtInterceptor } from './interceptors/jwt.interceptors';
 
 @NgModule({
   declarations: [AppComponent],
